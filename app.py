@@ -9,6 +9,10 @@ app = Flask(__name__)
 def index():
     return render_template('index.html')
 
+@app.route('/info')
+def info():
+    return render_template('info.html')
+
 @app.route('/search')
 def search_movies():
     query = request.args.get('query')
@@ -38,10 +42,11 @@ def movie(tmdb_movie_id):
     response = requests.get(api_url)
     movie_data = response.json()
 
-    return render_template("movie.html", iframe=get_embed(movie_data['title'].lower()), title=movie_data['title'])
+    return render_template("movie.html", iframe=get_embed(movie_data['title'], tmdb_movie_id), title=movie_data['title'])
 
-def get_embed(title):
+def get_embed(title, id):
     filteredtitle = title.replace(" ", "-")
+    filteredtitle = title.lower()
     url = f"https://w1.nites.is/movies/{filteredtitle}/"
     response = requests.get(url)
     html_content = response.text
@@ -55,7 +60,7 @@ def get_embed(title):
         return iframe
     else:
         print("No movie URL found.")
-        return render_template("movie_not_found.html", title=title, provider="nites.is")
+        return render_template("movie_not_found.html", title=title, provider="nites.is", tmdb_movie_id=id)
     
 @app.route('/vidsrc/movie/<path:tmdb_movie_id>')
 def vidsrc(tmdb_movie_id):
@@ -65,14 +70,14 @@ def vidsrc(tmdb_movie_id):
     response = requests.get(api_url)
     movie_data = response.json()
 
-    return render_template("movie.html", iframe=get_vidsrc(tmdb_movie_id, movie_data['title']), title=movie_data['title'])
+    return render_template("movie.html", iframe=get_vidsrc(movie_data['title'], tmdb_movie_id), title=movie_data['title'])
     
-def get_vidsrc(key, title):
+def get_vidsrc(title, key):
     url = f"https://vidsrc.to/embed/movie/{key}"
     iframe = f'<iframe class="movie_iframe" frameborder="0" allowfullscreen="" src="{url}"></iframe>'
     response = requests.get(url)
     if "404" in response.text:
-        return render_template("movie_not_found.html", title=title, provider="vidsrc")
+        return render_template("movie_not_found.html", title=title, provider="vidsrc", tmdb_movie_id=key)
     else:
         return iframe
 
