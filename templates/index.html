@@ -10,12 +10,12 @@
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/styles.css') }}">
     <script src="https://kit.fontawesome.com/b5683da958.js" crossorigin="anonymous"></script>
 </head>
-<a href="/info" class="info-button">
-    <img src="{{ url_for('static', filename='images/info.png') }}" alt="Info Button">
-  </a>
 <body>
+  <img class="url-button" src="{{ url_for('static', filename='images/info.png') }}" alt="Info Button" onclick="window.location.href = '/info'">
+  <img class="url-button" src="{{ url_for('static', filename='images/github.png') }}" alt="github" onclick="window.location.href = 'https://github.com/Mongo-Movies/Mongo-Movies'">
+  <div class="content">
     <div class="center-container">
-        <h1 class="search-text"></h1>
+        <h1 class="search-text" id="search-text">What would you like to watch?</h1>
         <div class="search-container">
             <input type="text" class="search-input" placeholder="Search...">
             <i class="fas fa-search search-icon"></i>
@@ -34,19 +34,17 @@
                 <option value="vidsrc">Source: VidSrc</option>
                 <option value="nites">Source: Nites</option>
             </select>
-        </div>        
+        </div><br><br><br><br><br>
         <!-- made by DeSu32-->
-    </div>
-
-    <div id="movies-container" class="movies-container"></div>
-
+    </div><br><br>
     <div class="loading-container" style="display: none;">
         <img src="{{ url_for('static', filename='images/loading.gif') }}" alt="Loading Animation">
         <p class="loading-text">Loading...</p>
     </div>
+    <div id="movies-container" class="movies-container"></div>
 
     <script src="{{ url_for('static', filename='js/movies.js') }}"></script>
-
+    </div>
 </body>
 
 </html>

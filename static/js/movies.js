@@ -1,5 +1,5 @@
 window.onload = function () {
-    const searchHeaderText = document.querySelector('.search-text');
+    const searchHeaderText = document.getElementById('search-text');
     const currentHour = new Date().getHours();
 
     if (currentHour < 12) {

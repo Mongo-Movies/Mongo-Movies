@@ -2,6 +2,8 @@ body {
     background: radial-gradient(ellipse at top, #3e34b4, #201d57 50%, #131334 70%, #0c0c21 100%);
     background-size: cover;
     background-attachment: fixed;
+}
+.content {
     margin: 0;
     padding: 0;
     font-family: Arial, sans-serif;
@@ -11,13 +13,9 @@ body {
     overflow: auto;
     overflow-x: hidden;
 }
-.info-button {
-    position: absolute;
-    top: 20px;
-    right: 20px;
-    z-index: 9999;
+.url-button {
+    position: sticky;
     cursor: pointer;
-    scale: 5%;
 }
 
 .route-selecter {
@@ -28,14 +26,9 @@ body {
     padding: 3px;
     scale: 125%;
     margin-top: 3.5px;
-    color: #1D1B4F;
+    color: white;
     position: relative;
     font-weight: bold;
-    text-shadow: 
-    -1px -1px 0 white,
-    1px -1px 0 white,
-    -1px 1px 0 white,
-    1px 1px 0 white;
 }
 
 ::-webkit-scrollbar {
@@ -68,12 +61,12 @@ body {
     display: flex;
     align-items: center;
     width: 400px;
-    margin-top: 30px;
 }
 
 .search-text {
     color: #ffffff;
     margin-bottom: 20px;
+  
 }
 
 .search-input {
@@ -103,7 +96,8 @@ body {
 
 h1 .search-text {
     color: #ffffff;
-    margin-top: -150px;
+    display: flex;
+    align-items: center;
 }
 
 footer {
@@ -113,16 +107,16 @@ footer {
 
 .loading-container {
     position: absolute;
-    bottom: 130px;
     width: 100%;
     text-align: center;
     padding: 10px 0;
     z-index: 1;
     display: none;
+    bottom: 50px;
 }
 
 .loading-container img {
-    width: 50px;
+    width: 90px;
 }
 
 .loading-text {
