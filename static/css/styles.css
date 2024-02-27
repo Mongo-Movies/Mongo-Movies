@@ -12,8 +12,17 @@ body {
     overflow-x: hidden;
 }
 
-
-
+.route-selecter {
+    background-color: #372F9E;
+    border-color: #201d57;
+    border-width: 3px;
+    border-radius: 15px;
+    padding: 3px;
+    scale: 125%;
+    margin-top: 3.5px;
+    color: #1D1B4F;
+    position: relative;
+}
 
 ::-webkit-scrollbar {
     width: 10px;
