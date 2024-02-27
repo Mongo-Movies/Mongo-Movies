@@ -11,15 +11,12 @@
             font-weight: bold;
             width: 50%;
             word-wrap: break-word;
-            text-shadow: 
-            -1px -1px 0 white,
-            1px -1px 0 white,
-            -1px 1px 0 white,
-            1px 1px 0 white;
+            color: white;
         }
     </style>
 </head>
 <body>
+    <img class="url-button" src="{{ url_for('static', filename='images/home.png') }}" alt="home Button" onclick="window.location.href = '/'">
     <center><h1>About Us</h1>
     <p>We are a free, simple movie service, with no adds, no popups and a simple UI<br>
     loading movies may take up to 30 seconds as its all serverside<br><br>
