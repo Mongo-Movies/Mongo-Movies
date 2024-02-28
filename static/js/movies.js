@@ -107,7 +107,6 @@ if (Enabled) {
   button.addEventListener('click', function () {
     button.classList.toggle('open');
     popup.style.display = button.classList.contains('open') ? 'block' : 'none';
-    document.body.style.overflow = button.classList.contains('open') ? 'hidden' : 'auto';
   });
 } else {
   var button = document.getElementById('settings-button');
