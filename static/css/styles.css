@@ -176,3 +176,65 @@ footer {
     overflow: hidden;
     text-overflow: ellipsis;
 }
+#settings-button {
+  position: fixed;
+  top: 0px;
+  right: 0px;
+  background-color: #333333;
+  color: white;
+  padding: 10px;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  z-index: 100;
+  user-select: none;
+}
+
+#settings-button:hover {
+  background-color: #555555;
+}
+
+#settings-button .arrow {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  border-top: 2px solid white;
+  border-right: 2px solid white;
+  transform: rotate(-45deg);
+  transition: transform 0.3s;
+}
+.arrow {
+  margin-left: 5px;
+}
+#settings-button.open .arrow {
+  transform: rotate(135deg);
+}
+
+#settings-popup {
+  display: none;
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 30%;
+  height: 70%;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 99;
+  overflow: hidden;
+  transition: opacity 0.3s;
+  border-radius: 0 0 0 30px;
+  border-left: #333333 4px solid;
+  border-bottom: #333333 4px solid;
+}
+
+#settings-iframe {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 0;
+  height: 100%;
+  background-color: white;
+}
+
+#settings-button.open ~ #settings-popup #settings-iframe {
+  width: 100%;
+}

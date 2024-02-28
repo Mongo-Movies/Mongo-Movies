@@ -1,0 +1,63 @@
+<html>
+<head>
+  <title>
+    settings
+  </title>
+  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/styles.css') }}">
+  <style>
+    input[type="text"] {
+      min-width: 300px;
+      max-width: 80%;
+      padding: 10px;
+      font-size: 16px;
+    }
+  </style>
+</head>
+
+<body>
+  <center><br><br>  <input type="text" id="title" oninput="changePageTitle()" placeholder="Enter the new page title">
+  <br>
+  <button onclick="changePageTitle()" hidden>
+    click me if page title doesn't change
+  </button>
+    </center>
+  <script type="text/javascript">
+    function getCookie(name) {
+      var cookieArr = document.cookie.split(";");
+
+      for (var i = 0; i < cookieArr.length; i++) {
+        var cookiePair = cookieArr[i].split("=");
+        if (name === cookiePair[0].trim()) {
+          return decodeURIComponent(cookiePair[1]);
+        }
+      }
+
+      return null;
+    }
+
+    var storedTitle = getCookie("pageTitle");
+    if (storedTitle) {
+      document.addEventListener("DOMContentLoaded", function() {
+        document.getElementById('title').value = storedTitle;
+        parent.document.title = storedTitle;
+      });
+    }
+
+    var originalTitle = parent.document.title;
+
+    function changePageTitle() {
+      var newPageTitle = document.getElementById('title').value;
+      if (newPageTitle.trim() === "") {
+        parent.document.title = originalTitle;
+        document.cookie = "pageTitle=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+      } else {
+        parent.document.title = newPageTitle;
+        var expirationDate = new Date();
+        expirationDate.setDate(expirationDate.getDate() + 7);
+        document.cookie = "pageTitle=" + newPageTitle + "; expires=" + expirationDate.toUTCString() + "; path=/;";
+      }
+    }
+  </script>
+</body>
+
+</html>

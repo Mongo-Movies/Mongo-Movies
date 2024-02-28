@@ -95,3 +95,24 @@ searchInput.addEventListener('input', function () {
         }, 1000);
     }
 });
+
+// popup for settings
+
+var Enabled = true;
+
+if (Enabled) {
+  var button = document.getElementById('settings-button');
+  var popup = document.getElementById('settings-popup');
+
+  button.addEventListener('click', function () {
+    button.classList.toggle('open');
+    popup.style.display = button.classList.contains('open') ? 'block' : 'none';
+    document.body.style.overflow = button.classList.contains('open') ? 'hidden' : 'auto';
+  });
+} else {
+  var button = document.getElementById('settings-button');
+  var popup = document.getElementById('settings-popup');
+
+  button.style.display = 'none';
+  popup.style.display = 'none';
+}

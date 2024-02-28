@@ -16,5 +16,24 @@
         }
     </style>
     {{ iframe | safe }}
-<body>
+  <script type="text/javascript">
+    function getCookie(name) {
+      var cookieArr = document.cookie.split(";");
+
+      for (var i = 0; i < cookieArr.length; i++) {
+        var cookiePair = cookieArr[i].split("=");
+        if (name === cookiePair[0].trim()) {
+          return decodeURIComponent(cookiePair[1]);
+        }
+      }
+
+      return null;
+    }
+
+    var storedTitle = getCookie("pageTitle");
+    if (storedTitle) {
+      document.title = storedTitle;
+    }
+  </script>
+</body>
 </html>
